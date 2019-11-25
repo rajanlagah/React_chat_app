@@ -1,8 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+import LoginPage from "./container/Login";
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
+export default function App() {
+  return (
+    <Router>
+        <Switch>
+            <Route path="/">
+                <LoginPage />
+            </Route>
+        </Switch>
+    </Router>
+  );
+}
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
