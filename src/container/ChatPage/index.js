@@ -1,20 +1,28 @@
 import React, { useState, useEffect } from 'react';
+import io from 'socket.io-client';
 
 import {ChatArea,PeopleNameArea} from './../../component/ChatPage'
 
 
+const socket = io('http://localhost:4000');
+
 export default function LoginPage() {
   const [userName, setUserName] = useState('');
-  const [userPassword, setUserPassword] = useState('');
+  const [userMessage, setUserMessage] = useState('');
   const [userSelected, setUserSelected] = useState('');
   // Similar to componentDidMount and componentDidUpdate:
-//   useEffect(() => {
-//       console.log('i am moutned');
-//   });
+  useEffect(() => {
+    socket.on('connect', function(){
+        console.log('connected')
+    });
 
-    const sendDataToLog = () => {
-        console.log(userName)   
-        console.log(userPassword)   
+      console.log('i am moutned');
+  });
+
+    const sendMessage = () => {
+        console.log(userSelected)   
+        console.log(userMessage)
+
     };
 
   return (
@@ -46,14 +54,14 @@ export default function LoginPage() {
                 sender:"a",
                 body:'bbiii'     
             },]}
-            userPassword={userPassword}
+            userMessage={userMessage}
             setUserName={setUserName}
-            setUserPassword={setUserPassword}
-            sendDataToLog={sendDataToLog} 
+            setUserMessage={setUserMessage}
+            sendMessage={sendMessage} 
         />
         <PeopleNameArea 
-            users={["a","b"]}
-            userSelected={"a"}
+            users={["a","b","c","d","e","f"]}
+            userSelected={userSelected}
             setUserSelected={setUserSelected}
         />
     </div>

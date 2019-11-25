@@ -3,7 +3,7 @@ import React from 'react';
 import MsgBox from './MsgBox'
 import './ChatArea.css'
 
-function App({msgs,userPassword,setUserPassword,sendDataToLog}) {
+function App({msgs,userMessage,setUserMessage,sendMessage}) {
   return (
     <div className='chat-area'>
         <div className="msgs-container">
@@ -13,8 +13,8 @@ function App({msgs,userPassword,setUserPassword,sendDataToLog}) {
           ))
         }
         </div>
-        <input value={userPassword} onChange={(e)=>setUserPassword(e.target.value)} placeholder='Type message here'/>
-        <button onClick={()=>sendDataToLog()}>Send</button>
+        <input value={userMessage} onChange={(e)=>setUserMessage(e.target.value)} placeholder='Type message here'/>
+        <button onClick={()=>sendMessage()}>Send</button>
     </div>
   );
 }

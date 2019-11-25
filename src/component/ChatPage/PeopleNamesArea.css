@@ -1,0 +1,17 @@
+.person-name{
+    margin: 2px;
+    padding: 20px;
+    height: 40px;
+    flex: 1;
+    width: 40px;
+}
+
+.person-selected{
+    background-color: teal;
+}
+
+.person-name-container{
+    display: flex;
+    overflow-x: scroll;
+    flex-direction: row;
+}
