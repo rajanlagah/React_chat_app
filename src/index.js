@@ -4,6 +4,7 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 
 import LoginPage from "./container/Login";
+import ChatPage from "./container/ChatPage"
 
 import {
   BrowserRouter as Router,
@@ -15,6 +16,9 @@ export default function App() {
   return (
     <Router>
         <Switch>
+            <Route path="/ChatPage">
+                <ChatPage/>
+            </Route>
             <Route path="/">
                 <LoginPage />
             </Route>

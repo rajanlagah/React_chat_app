@@ -1,0 +1,16 @@
+.msg-box{
+    flex:1;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid black;
+    border-radius: 20px;
+    min-height: 50px;
+}
+
+.white-box{
+    background-color: blanchedalmond;
+}
+
+.green-box{
+    background-color:green;
+}
