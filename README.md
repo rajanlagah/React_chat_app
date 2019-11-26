@@ -2,7 +2,7 @@
 I gave my self 24 hours to build something with service worker in use. So, I tried to implement chat app inspired from Google Chrome Developers
  video [here](https://www.youtube.com/watch?v=cmGr0RszHc8&t=1998s). 
 
-![Front view](https://user-images.githubusercontent.com/20952569/69655456-8cb77f80-109c-11ea-9d8f-cd2f40ba9218.png)
+<img alt='app_image' src="https://user-images.githubusercontent.com/20952569/69655456-8cb77f80-109c-11ea-9d8f-cd2f40ba9218.png" width="200">
 
 ## what it contains
 In order to implement it i have to build chat app first. It is not full app like wapp or telegram. <br/>
@@ -13,11 +13,11 @@ I also have required server for this to. You can check that at  [here](https://g
 
 ## Available Scripts
 - Cache
-- Offline page
-    ![Offline page](https://user-images.githubusercontent.com/20952569/69655445-8923f880-109c-11ea-8b38-6a576ce07f3c.png)
+- Offline page<br/>
+    <img alt="Offline page" src="https://user-images.githubusercontent.com/20952569/69655445-8923f880-109c-11ea-8b38-6a576ce07f3c.png" width=200 /> 
 - Lifi handling ( not able to test it properly even at very low network)
-    - example out put
-    ![Image for Lifi](https://user-images.githubusercontent.com/20952569/69655435-84f7db00-109c-11ea-9358-031c950cf02a.png)
+    - example out put <br/>
+    <img alt="Image for Lifi" src="https://user-images.githubusercontent.com/20952569/69655435-84f7db00-109c-11ea-9358-031c950cf02a.png" width=200 /> 
 - App status
 
 
