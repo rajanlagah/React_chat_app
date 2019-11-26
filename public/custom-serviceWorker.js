@@ -1,4 +1,4 @@
-const cacheName = `cache-v3.9.3`;
+const cacheName = `cache-v3.9.6`;
 
 const channel = new BroadcastChannel('custom-serviceWorker');
 
@@ -51,20 +51,19 @@ self.addEventListener('install', e => {
   self.addEventListener('fetch', e => {
     console.log('i am fetch event')
 
-    const url = new URL(event.request.url);
-    console.log('location')
-    console.log(location)
+    const url = new URL(e.request.url);
 
     // might b this block is useless as v use react
-    if(url.origin == location.origin && url.pathname === '/'){
+    if(url.origin == location.origin &&  url.pathname === '/'){
       console.log('sending sell')
-      event.respondWith(caches.match('/shell.html'))
+      e.respondWith(caches.match('/shell.html'))
     }
 
       channel.postMessage(navigator.onLine);
+      console.log(e.request.mode);
       if (!navigator.onLine && e.request.mode === 'navigate') {
         e.respondWith(
-          caches.match('./offline.html').then(res => {
+          caches.match('/offline.html').then(res => {
             return new Response(res.body, {
               headers: {
                 'Content-Type': 'text/html',
