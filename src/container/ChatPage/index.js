@@ -15,24 +15,24 @@ export default function LoginPage() {
   const [userSelected, setUserSelected] = useState('a');
   const [allMessages,setAllMessages] = useState([])
   // Similar to componentDidMount and componentDidUpdate:
-    
-    useEffect(()=>{
-        socket.on('new-message', function(data){
-            console.log('data')
-            console.log(data)
-            setAllMessages([...allMessages,data])
+    useEffect( ()=>{
+        axios.get('http://localhost:4000/loadmsgs')
+        .then(res => {
+            console.log('res')
+            console.log(res)
+            setAllMessages([...res.data,...allMessages])
             console.log(allMessages)
-        });    
-    },[allMessages])
 
-  useEffect(() => {   
-    if('serviceWorker' in navigator ){
-        navigator.serviceWorker.register('/custom-service-worker.js');
-    }
+        })
+    },[])
 
-      console.log('i am moutned');
-  },[userMessage,userSelected,allMessages]);
-
+    socket.on('new-message', function(data){
+        console.log('data')
+        console.log(data)
+        console.log(allMessages)
+        setAllMessages([...allMessages,data])
+        console.log(allMessages)
+    });    
     const sendMessage = () => {
         console.log(userSelected)   
         console.log(userMessage)
@@ -44,6 +44,7 @@ export default function LoginPage() {
         <ChatArea
             allMessages={allMessages}
             userMessage={userMessage}
+            userSelected={userSelected}
             setUserMessage={setUserMessage}
             sendMessage={sendMessage} 
         />
