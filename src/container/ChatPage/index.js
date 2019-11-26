@@ -5,7 +5,7 @@ import axios from 'axios'
 import {ChatArea,PeopleNameArea} from './../../component/ChatPage'
 
 
-const socket = io('http://localhost:4000');
+const socket = io(`${process.env.REACT_APP_SERVER_IP}`);
 socket.on('connect', function(){
     console.log('connected')
 });
@@ -16,31 +16,22 @@ export default function LoginPage() {
   const [allMessages,setAllMessages] = useState([])
   // Similar to componentDidMount and componentDidUpdate:
     useEffect( ()=>{
-        axios.get('http://localhost:4000/loadmsgs')
+        axios.get(`${process.env.REACT_APP_SERVER_IP}/loadmsgs`)
         .then(res => {
-            console.log('res')
-            console.log(res)
             setAllMessages([...res.data,...allMessages])
-            console.log(allMessages)
-
         })
     },[])
 
     socket.on('new-message', function(data){
-        console.log('data')
-        console.log(data)
-        console.log(allMessages)
         setAllMessages([...allMessages,data])
-        console.log(allMessages)
     });    
     const sendMessage = () => {
-        console.log(userSelected)   
-        console.log(userMessage)
         socket.emit(`message`,{sender:userSelected,body:userMessage,time:Date.now()})
     };
 
   return (
     <div>
+        <meta http-equiv="Cache-control" content="public" />
         <ChatArea
             allMessages={allMessages}
             userMessage={userMessage}
@@ -49,7 +40,7 @@ export default function LoginPage() {
             sendMessage={sendMessage} 
         />
         <PeopleNameArea 
-            users={["a","b","c","d","e","f"]}
+            users={["a","11","c","d","e","f"]}
             userSelected={userSelected}
             setUserSelected={setUserSelected}
         />

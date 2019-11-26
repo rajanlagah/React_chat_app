@@ -1,4 +1,6 @@
-const cacheName = `cache-v3.9.2`;
+const cacheName = `cache-v3.9.3`;
+
+const channel = new BroadcastChannel('custom-serviceWorker');
 
 const cacheAssets = [
   '/loadmsgs',
@@ -9,8 +11,8 @@ const cacheAssets = [
   './offline_assets/astronaut.svg',
   './offline_assets/overlay_stars.svg',
   './offline_assets/bg_purple.png',
-  './favicon.ico',
-  './logo.png',
+  './offline.html',
+  './shell.html',
 ];
 
 // Call Install Event
@@ -45,6 +47,39 @@ self.addEventListener('install', e => {
       }),
     );
   });
+
+  self.addEventListener('fetch', e => {
+    console.log('i am fetch event')
+
+    const url = new URL(event.request.url);
+    console.log('location')
+    console.log(location)
+
+    // might b this block is useless as v use react
+    if(url.origin == location.origin && url.pathname === '/'){
+      console.log('sending sell')
+      event.respondWith(caches.match('/shell.html'))
+    }
+
+      channel.postMessage(navigator.onLine);
+      if (!navigator.onLine && e.request.mode === 'navigate') {
+        e.respondWith(
+          caches.match('./offline.html').then(res => {
+            return new Response(res.body, {
+              headers: {
+                'Content-Type': 'text/html',
+              },
+            });
+          }),
+        );
+      } else {
+        e.respondWith(
+          caches.match(e.request).then(res => {
+            return res || fetch(e.request);
+          }),
+        );
+      }
+  })
 
   self.addEventListener('message', event => {
     if (event.data === 'skipWaiting') {

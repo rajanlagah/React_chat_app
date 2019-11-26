@@ -6,8 +6,6 @@ import './ChatArea.css'
 function App({allMessages,userMessage,userSelected,setUserMessage,sendMessage}) {
   return (
     <div className='chat-area'>
-      {console.log(allMessages)}
-      {console.log('msgs')}
         <div className="msgs-container">
         {
           allMessages.map( (msg)=>(
