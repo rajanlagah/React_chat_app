@@ -10,8 +10,6 @@ It have one group where with 5-10 users that can do group chat.
 I also have required server for this to. You can check that at  [here](https://github.com/rajanlagah/react_chat_app_server.git) 
 
 ## Features of service worker implemented.
-
-## Available Scripts
 - Cache
 - Offline page<br/>
     <img alt="Offline page" src="https://user-images.githubusercontent.com/20952569/69655445-8923f880-109c-11ea-8b38-6a576ce07f3c.png" width=200 /> 
@@ -20,6 +18,12 @@ I also have required server for this to. You can check that at  [here](https://g
     <img alt="Image for Lifi" src="https://user-images.githubusercontent.com/20952569/69655435-84f7db00-109c-11ea-9358-031c950cf02a.png" width=200 /> 
 - App status
 
+## Further improvemnts 
+- UI (ofcourse)
+- Add notification 
+- Update App
+
+## Available Scripts
 
 In the project directory, you can run:
 
