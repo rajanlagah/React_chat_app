@@ -3,12 +3,14 @@ import React from 'react';
 import MsgBox from './MsgBox'
 import './ChatArea.css'
 
-function App({msgs,userMessage,setUserMessage,sendMessage}) {
+function App({allMessages,userMessage,setUserMessage,sendMessage}) {
   return (
     <div className='chat-area'>
+      {console.log(allMessages)}
+      {console.log('msgs')}
         <div className="msgs-container">
         {
-          msgs.map( (msg)=>(
+          allMessages.map( (msg)=>(
             <MsgBox msg={msg} owner={'c'}/>
           ))
         }
