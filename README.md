@@ -2,7 +2,7 @@
 I gave my self 24 hours to build something with service worker in use. So, I tried to implement chat app inspired from Google Chrome Developers
  video [here](https://www.youtube.com/watch?v=cmGr0RszHc8&t=1998s). 
 
-    ![Front view](https://user-images.githubusercontent.com/20952569/69655456-8cb77f80-109c-11ea-9d8f-cd2f40ba9218.png)
+![Front view](https://user-images.githubusercontent.com/20952569/69655456-8cb77f80-109c-11ea-9d8f-cd2f40ba9218.png)
 
 ## what it contains
 In order to implement it i have to build chat app first. It is not full app like wapp or telegram. <br/>
