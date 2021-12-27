@@ -11,6 +11,8 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import ContactList from './container/ContactList';
+import { InfoSecondary } from './component/TypoGraphy/Heading';
 
 
 const channel = new BroadcastChannel('custom-serviceWorker');
@@ -36,10 +38,13 @@ export default function App() {
   return (
     <Router>
         <div>
-          <h1>{status?"Online":"Offline"}</h1>
+          <InfoSecondary text={status?"Online":"Offline"}/>¯
         </div>
         <Switch>
-            <Route path="/">
+            <Route path="/ContactList">
+                <ContactList/>
+            </Route>
+            <Route exact path="/">
                 <ChatPage/>
             </Route>
         </Switch>
