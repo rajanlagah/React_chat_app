@@ -1,20 +1,7 @@
 .msgs-container{
     display: flex;
     flex-direction: column;
-    height: 50vh;
+    height: calc(100vh - 150px);
     overflow: scroll;
-    margin: 20px;
-}
-.chat-area input{
-    width: 100%;
-    background-color: honeydew;
-}
-
-.chat-area button{
-    width: 98%;
-    height: 20px;
-    margin: 1%;
-    border-width: 0;
-    color: white;
-    background-color: green;
+    padding: 20px;
 }

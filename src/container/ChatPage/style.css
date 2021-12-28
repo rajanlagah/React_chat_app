@@ -1,0 +1,9 @@
+.msg-history-area{
+    display: block;
+    height: 90%;
+}
+.user-msg-input{
+    height: 150px;
+    width: 100%;
+    padding: 5px;
+}

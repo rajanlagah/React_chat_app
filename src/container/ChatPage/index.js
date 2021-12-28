@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import axios from 'axios'
 import { useSearchParams } from "react-router-dom";
+import SendIcon from '@mui/icons-material/Send';
 
 import {MsgHistoryArea,PeopleNameArea} from './../../component/ChatPage'
+import { Box, Button, Grid, Stack, TextField } from '@mui/material';
 
+import './style.css'
 
 
 export default function ChatPage({user}) {
@@ -42,9 +45,7 @@ export default function ChatPage({user}) {
     };
 
   return (
-    <div>
-        deseeeeeeee
-        <meta http-equiv="Cache-control" content="public" />
+    <div className="msg-history-area">
         <MsgHistoryArea
             allMessages={allMessages}
             userMessage={userMessage}
@@ -52,6 +53,28 @@ export default function ChatPage({user}) {
             setUserMessage={setUserMessage}
             sendMessage={sendMessage} 
         />
+        <div className="user-msg-input">
+            <Grid container spacing={1}>
+                <Grid item xs={9}>
+                    <Box
+                        sx={{
+                            '& .MuiTextField-root': { m: 1, width: '100%' },
+                        }}
+                    >
+                        <TextField 
+                        size="small"
+                        id="outlined-basic" 
+                        label="Message" 
+                        onChange={(e)=>setUserMessage(e.target.value)}
+                        placeholder='Type message here'
+                        value={userMessage} />
+                    </Box>
+                </Grid>
+                <Grid item xs={3} sx={{margin:"auto"}} >
+                    <Button onClick={()=>sendMessage()} size="small" endIcon={<SendIcon />} />
+                </Grid>
+            </Grid>
+        </div>
     </div>
   );
 }
