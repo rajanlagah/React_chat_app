@@ -1,7 +1,7 @@
-import ChatArea from './ChatArea';
+import MsgHistoryArea from './MsgHistoryArea';
 import PeopleNameArea from './PeopleNamesArea'
 
 export  {
-    ChatArea,
+    MsgHistoryArea,
     PeopleNameArea
 }

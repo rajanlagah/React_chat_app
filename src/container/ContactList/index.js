@@ -16,9 +16,7 @@ function ContactList() {
             <TextMain text ="Contacts" />
             <br/>
             <br/>
-            { users.map((user) => <UserListCard
-               {...user}
-            />)}
+            { users.map((user) => <UserListCard {...user}/>)}
         </div>
     );
 }

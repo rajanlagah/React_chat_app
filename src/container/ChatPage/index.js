@@ -1,48 +1,56 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import axios from 'axios'
+import { useSearchParams } from "react-router-dom";
 
-import {ChatArea,PeopleNameArea} from './../../component/ChatPage'
+import {MsgHistoryArea,PeopleNameArea} from './../../component/ChatPage'
 
 
-const socket = io(`${process.env.REACT_APP_SERVER_IP}`);
-socket.on('connect', function(){
-    console.log('connected')
-});
 
-export default function LoginPage() {
+export default function ChatPage({user}) {
   const [userMessage, setUserMessage] = useState('');
-  const [userSelected, setUserSelected] = useState('a');
   const [allMessages,setAllMessages] = useState([])
-  // Similar to componentDidMount and componentDidUpdate:
+  const searchParams = useSearchParams();
+  let socket
+    console.log("searchParams",searchParams)
     useEffect( ()=>{
+        try{
         axios.get(`${process.env.REACT_APP_SERVER_IP}/loadmsgs`)
         .then(res => {
             setAllMessages([...res.data,...allMessages])
         })
+        }catch(e){
+            console.log("ERROR IN LADING MSG")
+        }
     },[])
 
-    socket.on('new-message', function(data){
-        setAllMessages([...allMessages,data])
-    });    
+    useEffect(()=>{
+        try{
+        socket = io(`${process.env.REACT_APP_SERVER_IP}`);
+        socket.on('connect', function(){
+            console.log('connected')
+        });
+        socket.on('new-message', function(data){
+            setAllMessages([...allMessages,data])
+        });
+        }catch(e){
+            console.log("ERROR IN SOCKOIT CONNECTION")
+        }    
+    },[])
     const sendMessage = () => {
-        socket.emit(`message`,{sender:userSelected,body:userMessage,time:Date.now()})
+        socket.emit(`message`,{sender:user,body:userMessage,time:Date.now()})
     };
 
   return (
     <div>
+        deseeeeeeee
         <meta http-equiv="Cache-control" content="public" />
-        <ChatArea
+        <MsgHistoryArea
             allMessages={allMessages}
             userMessage={userMessage}
-            userSelected={userSelected}
+            userSelected={user}
             setUserMessage={setUserMessage}
             sendMessage={sendMessage} 
-        />
-        <PeopleNameArea 
-            users={["a","11","c","d","e","f"]}
-            userSelected={userSelected}
-            setUserSelected={setUserSelected}
         />
     </div>
   );

@@ -1,12 +1,14 @@
 import { Avatar, Badge, Stack } from '@mui/material';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { TextSecondary,InfoMain } from '../TypoGraphy/Heading';
 
 import './style.css'
 
 function UserListCard({name,img,is_active,last_msg,unseen_msgs}) {
+  const navigate = useNavigate()
   return (
-    <div className="user_list_card">
+    <div className="user_list_card" onClick={()=>navigate(`/chat/${name}`)}>
         <Stack direction="row"  
           justifyContent="flex-start"
           alignItems="center" 

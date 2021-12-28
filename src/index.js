@@ -3,12 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-// import LoginPage from "./container/Login";
 import ChatPage from "./container/ChatPage"
 
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
 } from "react-router-dom";
 import ContactList from './container/ContactList';
@@ -40,14 +39,10 @@ export default function App() {
         <div>
           <InfoSecondary text={status?"Online":"Offline"}/>¯
         </div>
-        <Switch>
-            <Route path="/ContactList">
-                <ContactList/>
-            </Route>
-            <Route exact path="/">
-                <ChatPage/>
-            </Route>
-        </Switch>
+        <Routes>
+            <Route path="/ContactList" element={<ContactList/>}/>
+            <Route exact path="/chat/:user" element={<ChatPage/>}/>
+        </Routes>
     </Router>
   );
 }
